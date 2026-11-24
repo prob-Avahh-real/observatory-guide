@@ -1,0 +1,27 @@
+node_modules/
+www/
+dist/
+build/
+.DS_Store
+android/
+.env
+*.local
+ios/App/App/public/
+ios/App/Pods/
+ios/capacitor-cordova-ios-plugins/
+# Publish hygiene & bloat exclusions
+.env.*
+!.env.example
+.npm-cache/
+.build/
+DerivedData/
+.gradle/
+android/app/build/
+android/.gradle/
+android/local.properties
+__pycache__/
+.venv/
+coverage/
+*.apk
+*.aab
+*.ipa

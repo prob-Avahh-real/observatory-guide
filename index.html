@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#050818" />
+  <title>星观台 · 全国天文台导览</title>
+  <link rel="stylesheet" href="/src/styles.css" />
+</head>
+<body>
+  <div id="app">
+    <canvas id="map-canvas"></canvas>
+
+    <header id="hud">
+      <div class="hud-left">
+        <h1>星观台</h1>
+        <span id="obs-count" class="badge"></span>
+      </div>
+      <div class="hud-controls">
+        <button id="btn-cache" class="icon-btn" title="离线缓存">⬇️</button>
+        <span id="cache-status" class="cache-badge hidden"></span>
+        <button id="btn-filter" class="icon-btn" title="筛选">🔭</button>
+        <button id="btn-list" class="icon-btn" title="列表">☰</button>
+        <button id="btn-locate" class="icon-btn" title="定位最近">📍</button>
+      </div>
+    </header>
+
+    <div id="filter-bar" class="hidden">
+      <button class="filter-chip active" data-type="all">全部</button>
+      <button class="filter-chip" data-type="national">国家台站</button>
+      <button class="filter-chip" data-type="university">高校台站</button>
+      <button class="filter-chip" data-type="public">公众开放</button>
+    </div>
+
+    <aside id="list-panel" class="hidden">
+      <div class="panel-header">
+        <h2>天文台列表</h2>
+        <button id="btn-close-list" class="close-btn" aria-label="关闭">✕</button>
+      </div>
+      <div id="list-content"></div>
+    </aside>
+
+    <aside id="detail-panel" class="hidden">
+      <button id="btn-close-detail" class="close-btn" aria-label="关闭">✕</button>
+      <div id="detail-content">
+        <div class="detail-hero">
+          <span id="detail-type" class="type-tag"></span>
+          <h2 id="detail-name"></h2>
+          <p id="detail-location" class="subtitle"></p>
+        </div>
+        <div id="detail-stats" class="stats"></div>
+        <p id="detail-desc" class="description"></p>
+        <div id="detail-facts" class="facts"></div>
+        <div id="detail-visit" class="visit-info"></div>
+      </div>
+      <div class="media-controls">
+        <button id="btn-audio" class="media-btn">🔊 语音导览</button>
+        <button id="btn-video" class="media-btn primary">🎬 视频导览</button>
+        <button id="btn-ask" class="media-btn">🎤 语音提问</button>
+      </div>
+      <p id="voice-status" class="voice-status"></p>
+    </aside>
+
+    <div id="tour-overlay" class="hidden">
+      <canvas id="tour-canvas"></canvas>
+      <video id="tour-video" class="tour-video hidden" playsinline webkit-playsinline muted loop></video>
+      <div id="tour-caption" class="tour-caption"></div>
+      <div id="tour-credit" class="tour-credit hidden"></div>
+      <div class="tour-controls">
+        <button id="btn-tour-prev" class="icon-btn">◀</button>
+        <button id="btn-tour-play" class="icon-btn">⏸</button>
+        <button id="btn-tour-next" class="icon-btn">▶</button>
+        <button id="btn-tour-close" class="icon-btn">✕</button>
+      </div>
+      <div id="tour-progress" class="tour-progress"><div id="tour-bar"></div></div>
+    </div>
+
+    <div id="device-bar">
+      <span id="ring-status" class="device-chip">💍</span>
+      <span id="cane-status" class="device-chip">🦯</span>
+      <span id="voice-dot" class="device-chip voice-chip">👓</span>
+    </div>
+
+    <div id="hint" class="hint">点击地图标记查看详情 · 双指缩放 · 拖动平移</div>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

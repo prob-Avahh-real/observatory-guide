@@ -1,0 +1,8 @@
+{
+  "appId": "com.skat.observatoryguide",
+  "appName": "星观台",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  }
+}
